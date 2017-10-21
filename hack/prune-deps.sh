@@ -31,6 +31,7 @@ git diff-index --name-only HEAD | grep -F \
   -e 'k8s.io/gengo' \
   -e 'k8s.io/kube-openapi' \
   -e 'k8s.io/kubernetes/cluster' \
+  -e 'k8s.io/kubernetes/cmd/gen' \
   -e 'k8s.io/kubernetes/examples' \
   -e 'k8s.io/kubernetes/hack' \
   -e 'k8s.io/kubernetes/pkg/util/template' \
@@ -38,7 +39,10 @@ git diff-index --name-only HEAD | grep -F \
   -e 'k8s.io/kubernetes/test/fixtures' \
   -e 'k8s.io/kubernetes/test/images' \
   -e 'k8s.io/kubernetes/translations' \
+  -e 'vendor/k8s.io/apimachinery/pkg/util/sets/types' \
   -e 'vendor/k8s.io/code-generator' \
+  -e 'vendor/k8s.io/client-go/util/cert/testdata' \
+  | grep -v 'vendor/github.com/jteeuwen/go-bindata/testdata' \
   | xargs -r git checkout -f
 
 # now cleanup what's dangling
