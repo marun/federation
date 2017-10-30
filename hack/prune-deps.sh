@@ -14,17 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+set -e
+
 # Sourced from https://github.com/openshift/client-go/blob/master/hack/prune-deps.sh
 
-# Staging paths are vendored
+# The staging areas will be vendored as repos
 rm -rf vendor/k8s.io/kubernetes/staging
 
-dep init
-dep prune
+glide-vc
 
 # we shouldn't have modified anything
 git diff-index --name-only --diff-filter=M HEAD | xargs -r git checkout -f
-# we need to preserve code-generator and friends that aren't referenced in the code
+# we need to preserve code that is not referenced in the code
 git diff-index --name-only HEAD | grep -F \
   -e 'github.com/jteeuwen/go-bindata' \
   -e 'github.com/onsi/ginkgo/ginkgo' \
@@ -42,6 +43,8 @@ git diff-index --name-only HEAD | grep -F \
   -e 'vendor/k8s.io/apimachinery/pkg/util/sets/types' \
   -e 'vendor/k8s.io/code-generator' \
   -e 'vendor/k8s.io/client-go/util/cert/testdata' \
+  -e 'LICENSE' \
+  -e 'BUILD' \
   | grep -v 'vendor/github.com/jteeuwen/go-bindata/testdata' \
   | grep -v 'vendor/k8s.io/kubernetes/staging' \
   | xargs -r git checkout -f
