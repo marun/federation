@@ -58,6 +58,5 @@ kazel | grep -vq 'vendor/k8s.io/kubernetes/pkg/generated/openapi/BUILD' && true
 # Rewrite the openapi BUILD file for federation to work for building
 # openapi for vendored kube.  This seems simpler than fixing kazel to
 # support generating for vendored kube.
-sed 's|\(pkg/generated/openapi\)|vendor/k8s.io/kubernetes/\1|' pkg/generated/openapi/BUILD \
-  | sed '/federation/d'  \
+sed '/federation/d' pkg/generated/openapi/BUILD \
   > vendor/k8s.io/kubernetes/pkg/generated/openapi/BUILD

@@ -19,6 +19,7 @@ openapi_library(
         "pkg/version",
     ],
     tags = ["automanaged"],
+    vendor_prefix = openapi_vendor_prefix,
     vendor_targets = [
         "k8s.io/api/admission/v1alpha1",
         "k8s.io/api/admissionregistration/v1alpha1",
