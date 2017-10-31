@@ -13,6 +13,7 @@ filegroup(
     name = "all-srcs",
     srcs = [
         ":package-srcs",
+        "//build/debs:all-srcs",
         "//build/release-tars:all-srcs",
         "//build/visible_to:all-srcs",
     ],
@@ -56,11 +57,11 @@ filegroup(
         "//cmd/genfeddocs",
         "//test/e2e:e2e.test",
         "//vendor/github.com/onsi/ginkgo/ginkgo",
-#        "//vendor/k8s.io/kubernetes/cmd/gendocs",
-#        "//vendor/k8s.io/kubernetes/cmd/genman",
-#        "//vendor/k8s.io/kubernetes/cmd/genswaggertypedocs",
-#        "//vendor/k8s.io/kubernetes/cmd/genyaml",
-#        "//vendor/k8s.io/kubernetes/cmd/linkcheck",
+        #        "//vendor/k8s.io/kubernetes/cmd/gendocs",
+        #        "//vendor/k8s.io/kubernetes/cmd/genman",
+        #        "//vendor/k8s.io/kubernetes/cmd/genswaggertypedocs",
+        #        "//vendor/k8s.io/kubernetes/cmd/genyaml",
+        #        "//vendor/k8s.io/kubernetes/cmd/linkcheck",
     ],
 )
 
